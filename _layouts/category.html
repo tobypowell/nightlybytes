@@ -1,0 +1,22 @@
+---
+layout: default
+---
+
+<section class="category-page">
+    <div class="row">
+        <div id="categories" class="col-4 col-offset-1">
+            {% include category-nav.html %}
+        </div><!-- ./col-2-->
+
+        <div class="col-6 flex snippet">
+        {% for post in site.categories[page.category] %}
+            <article>
+                <h3><a href="{{post.url}}" title="{{post.title}}">{{post.title}}</a></h3>
+                <p>{{post.date | date_to_string}}</p>
+            </article>
+        {% endfor %}
+
+        </div><!-- ./col-6 -->
+    </div><!--./row -->
+</section>
+

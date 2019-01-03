@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="descrition" content="Short snippets and writings of self learnings of web designer and developer Toby Powell">
+    <title>toby's daily's | Closure in Javascript and Jquery</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css'/>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
+    <link rel='stylesheet' href='http://localhost:4000/css/style.css'>
+</head>
+<body class="inner-page">
+
+    <header>
+        <a id="dailys-logo" href="http://localhost:4000" alt="Toby's daily's"><h1>Short snippets and writings of self learnings of web designer and developer Toby Powell</h1></a>
+        <a href="#" id="menu-icon"><span></span></a><!-- ./menu-icon -->
+    </header>
+
+        <article>
+
+    <section>
+        <div class="row">
+            <div id="categories" class="col-2 col-offset-1">
+                
+<h4>CATEGORIES</h4>
+<nav>
+    <ul>
+     
+        <li><a href="http://localhost:4000/category/shopify" alt="category"> Shopify</a></li>
+     
+        <li><a href="http://localhost:4000/category/frontend" alt="category"> Frontend</a></li>
+     
+        <li><a href="http://localhost:4000/category/modo" alt="category"> Modo</a></li>
+     
+        <li><a href="http://localhost:4000/category/javascript" alt="category"> Javascript</a></li>
+     
+        <li><a href="http://localhost:4000/category/inspiration" alt="category"> Inspiration</a></li>
+     
+        <li><a href="http://localhost:4000/category/design" alt="category"> Design</a></li>
+     
+    </ul>
+</nav>
+            </div><!-- ./col-2-->
+
+            <div class="col-8">
+
+                
+
+                <article>
+                    <img id="main-image" class="responsive" src="https://images.unsplash.com/photo-1454486837617-ce8e1ba5ebfe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=056795a1f5eb8b37cdb673c722d0c7cb&auto=format&fit=crop&w=500&q=60" alt="pic">
+                </article>
+            </div><!-- ./col- -->
+
+            <div class="col-6 col-offset-3">
+                <div id="article-title">
+                    <h1>Closure in Javascript and Jquery</h1>
+                </div><!-- ./article-title -->
+            </div><!-- ./ col-6 -->
+        </div><!-- ./row -->
+
+        <div class="row">
+            <div class="col-2 col-offset-3 meta-data">
+                <p>29 Jul 2018<br>
+                
+                <a href="http://localhost:4000/category/frontend" title="week range">frontend</a>
+                
+            </p>
+            </div><!-- ./col-2 -->
+
+            <div class="col-6">
+                   <div class="highlighter-rouge"><pre class="highlight"><code>function showName(firstName, lastName){
+    var nameIntro = "Your name is ";
+
+    // this inner function has access to the outer functions variables, including the parameters
+    function makeFullName(){
+        return nameIntro + firstName + ' ' + lastName;
+    }
+    return makeFullName();
+}
+
+showName("Micheal", "Jackson"); // Your name is Micheal Jackson
+</code></pre>
+</div>
+
+            </div><!-- ./col-6 -->
+        </div><!-- ./row -->
+
+    </section>
+</article>
+
+<div class="row center">
+
+    
+        <a href="/articles/attribute-selectors" title="" class="btn">previous</a>
+    
+    
+
+</div><!-- ./row -->
+
+
+
+     <footer>
+         <p>&copy; http://localhost:4000 2018</p>
+     </footer>
+
+     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+     <script src="http://localhost:4000/js/main.min.js"></script>
+    </body>
+</html>

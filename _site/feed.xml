@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>toby&#39;s daily&#39;s</title>
+    <description>Short snippets and writings of self learnings of web designer and developer Toby Powell</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 03 Jan 2019 21:31:56 +0000</pubDate>
+    <lastBuildDate>Thu, 03 Jan 2019 21:31:56 +0000</lastBuildDate>
+    <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>Closure in Javascript and Jquery</title>
+        <description>&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;function showName(firstName, lastName){
+    var nameIntro = &quot;Your name is &quot;;
+
+    // this inner function has access to the outer functions variables, including the parameters
+    function makeFullName(){
+        return nameIntro + firstName + &#39; &#39; + lastName;
+    }
+    return makeFullName();
+}
+
+showName(&quot;Micheal&quot;, &quot;Jackson&quot;); // Your name is Micheal Jackson
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Sun, 29 Jul 2018 00:00:00 +0100</pubDate>
+        <link>http://localhost:4000/articles/Javascript-closure</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/Javascript-closure</guid>
+        
+        
+        <category>frontend</category>
+        
+      </item>
+    
+      <item>
+        <title>Attribute Selectors in both css and jQuery</title>
+        <description>&lt;p&gt;Attribute selectors are easily recognisable as they are wrapped in square brackets: input[type=’text’]&lt;/p&gt;
+
+&lt;h4 id=&quot;the-begining-of-a-string&quot;&gt;^= the begining of a string.&lt;/h4&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;    &lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;^=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&#39;http://&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The ‘^’ (caret) character is used to specify a match at
+So the above selector will find all links thats href attribute begins with ‘http://’&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;!=&lt;/h3&gt;
+&lt;p&gt;The ‘!’ character specifies everything except that preceeds the ‘not equal to’ character:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;    &lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;://&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;jquery&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;.com&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The above selector selects all the links &lt;strong&gt;except&lt;/strong&gt; the links with the href attribute of ‘http://jquery.com’&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;$=&lt;/h3&gt;
+&lt;p&gt;The $ character specify atrributes that &lt;strong&gt;end&lt;/strong&gt; with whatever preceeds the dollar sign:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;    &lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&#39;.pdf&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;*=&lt;/h3&gt;
+&lt;p&gt;The * selects all the elements&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;    &lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&#39;jquery.com&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;|=&lt;/h3&gt;
+&lt;p&gt;The |= ‘contains’ selector selects all the elements that contain the string specified&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-css&quot; data-lang=&quot;css&quot;&gt;    &lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&#39;main&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+</description>
+        <pubDate>Wed, 25 Jul 2018 00:00:00 +0100</pubDate>
+        <link>http://localhost:4000/articles/attribute-selectors</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/attribute-selectors</guid>
+        
+        
+        <category>frontend</category>
+        
+      </item>
+    
+      <item>
+        <title>Welcome to Jekyll!</title>
+        <description>&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Tom&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &#39;Hi, Tom&#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 20 Jul 2018 16:55:39 +0100</pubDate>
+        <link>http://localhost:4000/articles/welcome-to-jekyll</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/welcome-to-jekyll</guid>
+        
+        
+        <category>modo</category>
+        
+        <category>shopify</category>
+        
+        <category>javascript</category>
+        
+      </item>
+    
+      <item>
+        <title>We this looks like a jekyll post!!</title>
+        <description>&lt;p&gt;Cras mattis consectetur purus sit amet fermentum. Cras mattis consectetur purus sit amet fermentum. Cras mattis consectetur purus sit amet fermentum. Donec sed odio dui. Maecenas faucibus mollis interdum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Etiam porta sem malesuada magna mollis euismod.&lt;/p&gt;
+
+&lt;p&gt;Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nulla vitae elit libero, a pharetra augue. Cras justo odio,dapibus ac facilisis in, egestas eget quam. Aenean lacinia bibendum nulla sed consectetur. Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Sed posuere consectetur est at lobortis.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 18 Jul 2018 00:00:00 +0100</pubDate>
+        <link>http://localhost:4000/articles/first-post</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/first-post</guid>
+        
+        
+        <category>javascript</category>
+        
+        <category>frontend</category>
+        
+      </item>
+    
+      <item>
+        <title>Happy birthday my chung wife</title>
+        <description>&lt;p&gt;That evening Mr. Utterson came home to his bachelor house in sombre spirits and sat down to dinner without relish. It was his custom of a Sunday, when this meal was over, to sit close by the fire, a volume of some dry divinity on his reading desk, until the clock of the neighbouring church rang out the hour of twelve, when he would go soberly and gratefully to bed. On this night however, as soon as the cloth was taken away, he took up a candle and went into his business room. There he opened his safe, took from the most private part of it a document endorsed on the envelope as Dr.&lt;/p&gt;
+
+&lt;p&gt;Jekyll’s Will and sat down with a clouded brow to study its contents. The will was holograph, for Mr. Utterson though he took charge of it now that it was made, had refused to lend the least assistance in the making of it; it provided not only that, in case of the decease of Henry Jekyll, M.D., D.C.L., L.L.D., F.R.S., etc., all his possessions were to pass into the hands of his “friend and benefactor Edward Hyde,” but that in case of Dr. Jekyll’s “disappearance or unexplained absence for any period exceeding three calendar months,” the said Edward Hyde should step into the said Henry Jekyll’s shoes without further delay and free from any burthen or obligation beyond the payment of a few small sums to the members of the doctor’s household. This document had long been the lawyer’s eyesore. It offended him both as a lawyer and as a lover of the sane and customary sides of life, to whom the fanciful was the immodest.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 11 May 2018 00:00:00 +0100</pubDate>
+        <link>http://localhost:4000/articles/happy-birthday</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/happy-birthday</guid>
+        
+        
+        <category>javascript</category>
+        
+      </item>
+    
+      <item>
+        <title>Nibh Dolor Risus Ornare Ridiculus</title>
+        <description>&lt;p&gt;That evening Mr. Utterson came home to his bachelor house in sombre spirits and sat down to dinner without relish. It was his custom of a Sunday, when this meal was over, to sit close by the fire, a volume of some dry divinity on his reading desk, until the clock of the neighbouring church rang out the hour of twelve, when he would go soberly and gratefully to bed. On this night however, as soon as the cloth was taken away, he took up a candle and went into his business room. There he opened his safe, took from the most private part of it a document endorsed on the envelope as Dr.&lt;/p&gt;
+
+&lt;p&gt;Jekyll’s Will and sat down with a clouded brow to study its contents. The will was holograph, for Mr. Utterson though he took charge of it now that it was made, had refused to lend the least assistance in the making of it; it provided not only that, in case of the decease of Henry Jekyll, M.D., D.C.L., L.L.D., F.R.S., etc., all his possessions were to pass into the hands of his “friend and benefactor Edward Hyde,” but that in case of Dr. Jekyll’s “disappearance or unexplained absence for any period exceeding three calendar months,” the said Edward Hyde should step into the said Henry Jekyll’s shoes without further delay and free from any burthen or obligation beyond the payment of a few small sums to the members of the doctor’s household. This document had long been the lawyer’s eyesore. It offended him both as a lawyer and as a lover of the sane and customary sides of life, to whom the fanciful was the immodest.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
+        <link>http://localhost:4000/articles/Nibh-Dolor-Risus-Ornare-idiculus</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/Nibh-Dolor-Risus-Ornare-idiculus</guid>
+        
+        
+        <category>inspiration</category>
+        
+        <category>javascript</category>
+        
+      </item>
+    
+      <item>
+        <title>Vestibulum-Mattis-Vehicula</title>
+        <description>&lt;p&gt;That evening Mr. Utterson came home to his bachelor house in sombre spirits and sat down to dinner without relish. It was his custom of a Sunday, when this meal was over, to sit close by the fire, a volume of some dry divinity on his reading desk, until the clock of the neighbouring church rang out the hour of twelve, when he would go soberly and gratefully to bed. On this night however, as soon as the cloth was taken away, he took up a candle and went into his business room. There he opened his safe, took from the most private part of it a document endorsed on the envelope as Dr.&lt;/p&gt;
+
+&lt;p&gt;Jekyll’s Will and sat down with a clouded brow to study its contents. The will was holograph, for Mr. Utterson though he took charge of it now that it was made, had refused to lend the least assistance in the making of it; it provided not only that, in case of the decease of Henry Jekyll, M.D., D.C.L., L.L.D., F.R.S., etc., all his possessions were to pass into the hands of his “friend and benefactor Edward Hyde,” but that in case of Dr. Jekyll’s “disappearance or unexplained absence for any period exceeding three calendar months,” the said Edward Hyde should step into the said Henry Jekyll’s shoes without further delay and free from any burthen or obligation beyond the payment of a few small sums to the members of the doctor’s household. This document had long been the lawyer’s eyesore. It offended him both as a lawyer and as a lover of the sane and customary sides of life, to whom the fanciful was the immodest.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 31 Jan 2018 00:00:00 +0000</pubDate>
+        <link>http://localhost:4000/articles/Vestibulum-Mattis-Vehicula</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/Vestibulum-Mattis-Vehicula</guid>
+        
+        
+        <category>design</category>
+        
+        <category>javascript</category>
+        
+      </item>
+    
+      <item>
+        <title>Elit Mattis</title>
+        <description>&lt;p&gt;That evening Mr. Utterson came home to his bachelor house in sombre spirits and sat down to dinner without relish. It was his custom of a Sunday, when this meal was over, to sit close by the fire, a volume of some dry divinity on his reading desk, until the clock of the neighbouring church rang out the hour of twelve, when he would go soberly and gratefully to bed. On this night however, as soon as the cloth was taken away, he took up a candle and went into his business room. There he opened his safe, took from the most private part of it a document endorsed on the envelope as Dr.&lt;/p&gt;
+
+&lt;p&gt;Jekyll’s Will and sat down with a clouded brow to study its contents. The will was holograph, for Mr. Utterson though he took charge of it now that it was made, had refused to lend the least assistance in the making of it; it provided not only that, in case of the decease of Henry Jekyll, M.D., D.C.L., L.L.D., F.R.S., etc., all his possessions were to pass into the hands of his “friend and benefactor Edward Hyde,” but that in case of Dr. Jekyll’s “disappearance or unexplained absence for any period exceeding three calendar months,” the said Edward Hyde should step into the said Henry Jekyll’s shoes without further delay and free from any burthen or obligation beyond the payment of a few small sums to the members of the doctor’s household. This document had long been the lawyer’s eyesore. It offended him both as a lawyer and as a lover of the sane and customary sides of life, to whom the fanciful was the immodest.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 22 Jan 2018 00:00:00 +0000</pubDate>
+        <link>http://localhost:4000/articles/Elit-Mattis</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/Elit-Mattis</guid>
+        
+        
+        <category>frontend</category>
+        
+      </item>
+    
+      <item>
+        <title>Ullamcorper Pellentesque Dolor</title>
+        <description>&lt;p&gt;That evening Mr. Utterson came home to his bachelor house in sombre spirits and sat down to dinner without relish. It was his custom of a Sunday, when this meal was over, to sit close by the fire, a volume of some dry divinity on his reading desk, until the clock of the neighbouring church rang out the hour of twelve, when he would go soberly and gratefully to bed. On this night however, as soon as the cloth was taken away, he took up a candle and went into his business room. There he opened his safe, took from the most private part of it a document endorsed on the envelope as Dr.&lt;/p&gt;
+
+&lt;p&gt;Jekyll’s Will and sat down with a clouded brow to study its contents. The will was holograph, for Mr. Utterson though he took charge of it now that it was made, had refused to lend the least assistance in the making of it; it provided not only that, in case of the decease of Henry Jekyll, M.D., D.C.L., L.L.D., F.R.S., etc., all his possessions were to pass into the hands of his “friend and benefactor Edward Hyde,” but that in case of Dr. Jekyll’s “disappearance or unexplained absence for any period exceeding three calendar months,” the said Edward Hyde should step into the said Henry Jekyll’s shoes without further delay and free from any burthen or obligation beyond the payment of a few small sums to the members of the doctor’s household. This document had long been the lawyer’s eyesore. It offended him both as a lawyer and as a lover of the sane and customary sides of life, to whom the fanciful was the immodest.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 20 Jan 2018 00:00:00 +0000</pubDate>
+        <link>http://localhost:4000/articles/Ullamcorper-Pellentesque-Dolor</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/Ullamcorper-Pellentesque-Dolor</guid>
+        
+        
+        <category>modo</category>
+        
+      </item>
+    
+      <item>
+        <title>Vestibulum-Mattis-Vehicula</title>
+        <description>&lt;p&gt;That evening Mr. Utterson came home to his bachelor house in sombre spirits and sat down to dinner without relish. It was his custom of a Sunday, when this meal was over, to sit close by the fire, a volume of some dry divinity on his reading desk, until the clock of the neighbouring church rang out the hour of twelve, when he would go soberly and gratefully to bed. On this night however, as soon as the cloth was taken away, he took up a candle and went into his business room. There he opened his safe, took from the most private part of it a document endorsed on the envelope as Dr.&lt;/p&gt;
+
+&lt;p&gt;Jekyll’s Will and sat down with a clouded brow to study its contents. The will was holograph, for Mr. Utterson though he took charge of it now that it was made, had refused to lend the least assistance in the making of it; it provided not only that, in case of the decease of Henry Jekyll, M.D., D.C.L., L.L.D., F.R.S., etc., all his possessions were to pass into the hands of his “friend and benefactor Edward Hyde,” but that in case of Dr. Jekyll’s “disappearance or unexplained absence for any period exceeding three calendar months,” the said Edward Hyde should step into the said Henry Jekyll’s shoes without further delay and free from any burthen or obligation beyond the payment of a few small sums to the members of the doctor’s household. This document had long been the lawyer’s eyesore. It offended him both as a lawyer and as a lover of the sane and customary sides of life, to whom the fanciful was the immodest.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 12 Jan 2018 00:00:00 +0000</pubDate>
+        <link>http://localhost:4000/articles/Vestibulum-Mattis-Vehicula-copy</link>
+        <guid isPermaLink="true">http://localhost:4000/articles/Vestibulum-Mattis-Vehicula-copy</guid>
+        
+        
+        <category>shopify</category>
+        
+      </item>
+    
+  </channel>
+</rss>

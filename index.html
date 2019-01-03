@@ -1,0 +1,132 @@
+---
+layout: default
+title: 'Home'
+body-class: 'home'
+---
+
+{% comment %}assign all posts into pics array to grab main image later{% endcomment %}
+{% assign postsArray = site.posts %}
+
+
+    <section id="today">
+        <article class="row">
+           {% for post in site.posts limit: 1 %}
+            <div class="col-4 col-offset-4">
+                <img class="shadow responsive" src="{{post.main-image}}" alt="pic1">
+            </div><!-- ./col-4 -->
+            <div class="col-3">
+                <h2><a href="{{post.url}}" title="{{post.title}}">{{ post.title }}</a></h2>
+                <p>{{ post.description }}</p>
+                <p class="date">{{post.date | date_to_string}}</p>
+            </div><!-- ./col-3 -->
+            {% endfor %}
+        </article><!-- ./row -->
+    </section>
+
+
+    <section>
+        <div class="row week-range">
+            <div class="col-2 col-offset-5">
+                <p><a href="#" title="week range">Week start:{{postsArray[0].date | date_to_string }}</a></p>
+            </div>
+        </div><!-- ./row -->
+
+        <div class="row">
+            <div id="categories" class="col-4 col-offset-1">
+                <h4>CATEGORIES</h4>
+                <nav>
+                    <ul>
+                     {% for category in site.categories %}
+                        <li><a href="{{site.url}}/category/{{category | first}}" alt="category"> {{ category | first }}</a></li>
+                     {% endfor %}
+                    </ul>
+                </nav>
+            </div><!-- ./col-2-->
+
+            <div class="col-6 flex snippet">
+             {% for post in paginator.posts limit: 5 offset: 1 %}
+                <article>
+                    <h3><a href="{{post.url}}" title="{{post.title}}">{{post.title}}</a></h3>
+                    <p>{{post.date | date_to_string}}</p>
+                </article>
+            {% endfor %}
+
+
+
+            </div><!-- ./col-6 -->
+        </div><!--./row -->
+    </section>
+
+
+
+
+    <section class="light">
+        <div class="row week-range">
+            <div class="col-2 col-offset-5">
+                <p><a href="#" title="week range">Week start: {{postsArray[6].date | date_to_string }}</a></p>
+            </div>
+        </div><!-- ./row -->
+
+        <div class="row">
+            <div class="col-4 col-offset-1">
+                    <img class="shadow responsive" src="{{ postsArray[6].main-image }}" alt="pic1">
+            </div><!-- ./col-2-->
+
+            <div class="col-6 flex snippet">
+                {% for post in paginator.posts limit:6 offset:6 %}
+
+                    <article>
+                        <h3><a href="{{post.url}}" title="{{ post.title }}">{{ post.title }}</a></h3>
+                        <p>{{ post.date | date_to_string }}</p>
+                    </article>
+                {% endfor %}
+            </div><!-- ./col-6 -->
+        </div><!-- ./row -->
+    </section><!-- ./light -->
+
+
+
+    <section>
+        <div class="row week-range">
+            <div class="col-2 col-offset-1">
+                {% for post in paginator.posts limit:1 offset:12 %}
+                 <p><a href="#" title="week range">Week start: {{postsArray[12].date | date_to_string }}</a></p>
+                {% endfor %}
+            </div><!-- ./col-2 -->
+        </div><!-- ./row -->
+        <div class="row">
+            <div class="col-6 col-offset-1 flex snippet">
+               {% for post in paginator.posts limit:6 offset:12 %}
+               <article>
+                    <h3><a href="{{post.url}}" title="{{ post.title }}">{{ post.title }}</a></h3>
+                    <p>{{ post.date | date_to_string }}</p>
+                </article>
+                {% endfor %}
+            </div><!-- ./col-6 -->
+
+            <div class="col-4">
+               <img class="shadow responsive" src="{{ postsArray[12].main-image }}" alt="pic1">
+            </div><!-- ./col-2-->
+        </div><!-- ./row -->
+    </section>
+
+
+     <!-- <div class="row center">
+         <a href="#" title="" class="btn">load more</a>
+     </div> -->
+     <div class="row center">
+     <!-- Pagination links -->
+     {% if paginator.total_pages > 1 %}
+        <div class="pagination">
+        {% if paginator.previous_page %}
+          <a href="{{ paginator.previous_page_path | relative_url }}" class="previous btn">Previous</a>
+        {% endif %}
+        <span class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
+        {% if paginator.next_page %}
+          <a href="{{ paginator.next_page_path | relative_url }}" class="next btn">Next</a>
+        {% endif %}
+      </div><!-- ./pagination -->
+      {% endif %}
+    </div>
+
+

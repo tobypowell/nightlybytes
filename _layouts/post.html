@@ -1,0 +1,61 @@
+---
+layout: default
+---
+
+
+<article>
+
+    <section>
+        <div class="row">
+            <div id="categories" class="col-2 col-offset-1">
+                {% include category-nav.html %}
+            </div><!-- ./col-2-->
+
+            <div class="col-8">
+
+                {% if page.main-image %}
+                    {% assign main-image = page.main-image %}
+                {% else %}
+                    {% assign main-image = '/imgs/pic1-lrg.jpg' %}
+                {% endif %}
+
+                <article>
+                    <img id="main-image" class="responsive" src="{{main-image}}" alt="pic">
+                </article>
+            </div><!-- ./col- -->
+
+            <div class="col-6 col-offset-3">
+                <div id="article-title">
+                    <h1>{{page.title}}</h1>
+                </div><!-- ./article-title -->
+            </div><!-- ./ col-6 -->
+        </div><!-- ./row -->
+
+        <div class="row">
+            <div class="col-2 col-offset-3 meta-data">
+                <p>{{page.date | date_to_string}}<br>
+                {% for category in page.categories %}
+                <a href="{{site.url}}/category/{{category}}" title="week range">{{ category }}{% unless forloop.last %} &bullet; {% endunless %}</a>
+                {% endfor %}
+            </p>
+            </div><!-- ./col-2 -->
+
+            <div class="col-6">
+                   {{ content }}
+            </div><!-- ./col-6 -->
+        </div><!-- ./row -->
+
+    </section>
+</article>
+
+<div class="row center">
+
+    {% if page.previous.url %}
+        <a href="{{ page.previous.url }}" title="" class="btn">previous</a>
+    {% endif %}
+    {% if page.next.url %}
+      <a href="{{ page.next.url }}" title="" class="btn">next</a>
+    {% endif %}
+
+</div><!-- ./row -->
+

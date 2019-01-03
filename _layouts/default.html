@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="descrition" content="{{site.description}}">
+    <title>{{site.title}} | {{ page.title }}</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css'/>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
+    <link rel='stylesheet' href='{{ site.url }}/css/style.css'>
+</head>
+<body class="{{ page.body-class }}">
+
+    <header>
+        <a id="dailys-logo" href="{{site.url}}" alt="Toby's daily's"><h1>{{site.description}}</h1></a>
+        <a href="#" id="menu-icon"><span></span></a><!-- ./menu-icon -->
+    </header>
+
+        {{content}}
+
+     <footer>
+         <p>&copy; {{site.url}} 2018</p>
+     </footer>
+
+     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+     <script src="{{ site.url }}/js/main.min.js"></script>
+    </body>
+</html>

@@ -1,0 +1,9 @@
+
+<h4>CATEGORIES</h4>
+<nav>
+    <ul>
+     {% for category in site.categories %}
+        <li><a href="{{site.url}}/category/{{ category | first | downcase }}" alt="category"> {{ category | first | capitalize }}</a></li>
+     {% endfor %}
+    </ul>
+</nav>
